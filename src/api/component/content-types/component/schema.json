@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "components",
+  "info": {
+    "singularName": "component",
+    "pluralName": "components",
+    "displayName": "Component"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "sonar_project_key": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "repository_url": {
+      "type": "string"
+    },
+    "product_releases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-release.product-release",
+      "inversedBy": "components"
+    }
+  }
+}
