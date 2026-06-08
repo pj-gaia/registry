@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "criticality_tier": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Tier-1-Regulated",
+        "Tier-2-Standard",
+        "Tier-3-Internal"
+      ]
+    },
+    "product_releases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-release.product-release"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_releases",
+  "info": {
+    "singularName": "product-release",
+    "pluralName": "product-releases",
+    "displayName": "Product Release"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "version": {
+      "type": "string",
+      "required": true
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": false
+    },
+    "components": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::component.component",
+      "mappedBy": "product_releases"
+    }
+  }
+}
