@@ -474,6 +474,57 @@ export interface ApiComponentComponent extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPolicyPolicy extends Struct.CollectionTypeSchema {
+  collectionName: 'policies';
+  info: {
+    displayName: 'Policy';
+    pluralName: 'policies';
+    singularName: 'policy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    applicable_tiers: Schema.Attribute.Component<
+      'policy.applicable-tier',
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 1;
+        },
+        number
+      >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    display_name: Schema.Attribute.String & Schema.Attribute.Required;
+    lifecycle_status: Schema.Attribute.Enumeration<
+      ['Draft', 'Active', 'Deprecated']
+    > &
+      Schema.Attribute.DefaultTo<'Draft'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::policy.policy'
+    > &
+      Schema.Attribute.Private;
+    policy_id: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    requirements: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::requirement.requirement'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    version: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiProductReleaseProductRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'product_releases';
@@ -542,6 +593,39 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRequirementRequirement extends Struct.CollectionTypeSchema {
+  collectionName: 'requirements';
+  info: {
+    displayName: 'Requirement';
+    pluralName: 'requirements';
+    singularName: 'requirement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    display_name: Schema.Attribute.String & Schema.Attribute.Required;
+    is_mandatory: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::requirement.requirement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    requirement_id: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1060,8 +1144,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::component.component': ApiComponentComponent;
+      'api::policy.policy': ApiPolicyPolicy;
       'api::product-release.product-release': ApiProductReleaseProductRelease;
       'api::product.product': ApiProductProduct;
+      'api::requirement.requirement': ApiRequirementRequirement;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

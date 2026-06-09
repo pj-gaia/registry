@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "requirements",
+  "info": {
+    "singularName": "requirement",
+    "pluralName": "requirements",
+    "displayName": "Requirement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "requirement_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "display_name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "is_mandatory": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
