@@ -1,0 +1,43 @@
+services:
+  registry:
+    build:
+      context: .
+      target: builder
+    command: npm run develop
+    ports:
+      - "1337:1337"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: registry
+      DATABASE_USERNAME: registry
+      DATABASE_PASSWORD: registry
+    depends_on:
+      - db
+    networks:
+      - registry-network
+
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: registry
+      POSTGRES_USER: registry
+      POSTGRES_PASSWORD: registry
+    volumes:
+      - registry-db-data:/var/lib/postgresql/data
+    networks:
+      - registry-network
+
+volumes:
+  registry-db-data:
+
+networks:
+  registry-network:
