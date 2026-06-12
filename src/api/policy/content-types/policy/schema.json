@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "policies",
+  "info": {
+    "singularName": "policy",
+    "pluralName": "policies",
+    "displayName": "Policy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "policy_id": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "version": {
+      "type": "string",
+      "required": true
+    },
+    "display_name": {
+      "type": "string",
+      "required": true
+    },
+    "lifecycle_status": {
+      "type": "enumeration",
+      "default": "Draft",
+      "enum": [
+        "Draft",
+        "Active",
+        "Deprecated"
+      ]
+    },
+    "applicable_tiers": {
+      "type": "component",
+      "component": "policy.applicable-tier",
+      "repeatable": true,
+      "min": 1,
+      "max": 3
+    },
+    "requirements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::requirement.requirement"
+    }
+  }
+}

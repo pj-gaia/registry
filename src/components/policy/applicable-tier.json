@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_policy_applicable_tiers",
+  "info": {
+    "displayName": "Applicable Tier"
+  },
+  "options": {},
+  "attributes": {
+    "tier": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Tier_1_High",
+        "Tier_2_Medium",
+        "Tier_3_Low"
+      ]
+    }
+  },
+  "config": {}
+}
