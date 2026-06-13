@@ -36,6 +36,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-release.product-release"
+    },
+    "risk_profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::risk-profile.risk-profile"
+    },
+    "process_assessments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::process-assessment.process-assessment"
     }
   }
 }

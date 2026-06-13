@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "risk_profiles",
+  "info": {
+    "singularName": "risk-profile",
+    "pluralName": "risk-profiles",
+    "displayName": "RiskProfile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "inherent_risk_score": {
+      "type": "integer"
+    },
+    "calculated_tier": {
+      "type": "enumeration",
+      "enum": [
+        "Tier_1_High",
+        "Tier_2_Medium",
+        "Tier_3_Low"
+      ]
+    },
+    "scoping_answers": {
+      "type": "json"
+    }
+  }
+}

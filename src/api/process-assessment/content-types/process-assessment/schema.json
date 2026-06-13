@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "process_assessments",
+  "info": {
+    "singularName": "process-assessment",
+    "pluralName": "process-assessments",
+    "displayName": "ProcessAssessment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "version": {
+      "type": "string",
+      "required": true
+    },
+    "submission_date": {
+      "type": "datetime"
+    },
+    "assessment_status": {
+      "type": "enumeration",
+      "default": "Draft",
+      "enum": [
+        "Draft",
+        "Submitted",
+        "Approved"
+      ]
+    },
+    "answers_json": {
+      "type": "json"
+    }
+  }
+}

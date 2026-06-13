@@ -24,6 +24,11 @@
       "relation": "manyToMany",
       "target": "api::component.component",
       "mappedBy": "product_releases"
+    },
+    "process_assessment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::process-assessment.process-assessment"
     }
   }
 }
