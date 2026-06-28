@@ -21,7 +21,7 @@
       "targetField": "name"
     },
     "description": {
-      "type": "blocks"
+      "type": "text"
     },
     "criticality_tier": {
       "type": "enumeration",
