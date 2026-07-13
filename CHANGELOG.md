@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/pj-gaia/registry/compare/v1.1.0...v1.1.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* **registry:** change product description field to plain multiline text ([dcdaa83](https://github.com/pj-gaia/registry/commit/dcdaa832773270a1cb306290d38a21f67c66fb39))
+
 # [1.1.0](https://github.com/pj-gaia/registry/compare/v1.0.0...v1.1.0) (2026-06-15)
 
 
